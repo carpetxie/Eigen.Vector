@@ -1,0 +1,34 @@
+## multiple-images input
+# image_paths = [
+#     '/data/images/example_1.jpg',
+#     '/data/images/example_2.jpg',
+#     '/data/images/example_3.jpg'
+# ]
+# images = [Image.open(image_path) for image_path in image_paths]
+# max_partition = 4
+# text = 'Describe each image.'
+# query = '\n'.join([f'Image {i+1}: <image>' for i in range(len(images))]) + '\n' + text
+
+## video input (require `pip install moviepy==1.0.3`)
+# from moviepy.editor import VideoFileClip
+# video_path = '/data/videos/example_1.mp4'
+# num_frames = 12
+# max_partition = 1
+# text = 'Describe the video.'
+# with VideoFileClip(video_path) as clip:
+#     total_frames = int(clip.fps * clip.duration)
+#     if total_frames <= num_frames:
+#         sampled_indices = range(total_frames)
+#     else:
+#         stride = total_frames / num_frames
+#         sampled_indices = [min(total_frames - 1, int((stride * i + stride * (i + 1)) / 2)) for i in range(num_frames)]
+#     frames = [clip.get_frame(index / clip.fps) for index in sampled_indices]
+#     frames = [Image.fromarray(frame, mode='RGB') for frame in frames]
+# images = frames
+# query = '\n'.join(['<image>'] * len(images)) + '\n' + text
+
+## text-only input
+# images = []
+# max_partition = None
+# text = 'Hello'
+# query = text
